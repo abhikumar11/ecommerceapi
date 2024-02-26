@@ -30,14 +30,12 @@ module.exports.orderDetail = async (req, res) => {
   }
 }
 module.exports.orderHistory = async (req, res) => {
-     const userid=req.body
-     
+     const user_id=req.body
+     console.log(req.body)
      try {
-        const data=await prisma.order.findMany({
-             where:{user_id:userid}
-        });
+        const data=await prisma.order.findMany ({});
         return res.status(200).json(data);
      } catch (err) {
-        return res.status(404).json({ message:"Something went wrong",err:err.message });
+        return res.status(404).json({ message:"Something went wrong",err:err });
      }
 }

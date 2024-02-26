@@ -21,6 +21,7 @@ model Product{
   category Category @relation(fields: [category_id],references: [categoryid])
   category_id Int 
   order Order[]
+  cart Cart[]
 }
 model Category{
   categoryid Int @id
@@ -36,6 +37,12 @@ model Order{
   orderid Int @id
   user  User @relation(fields: [user_id],references: [email])
   user_id String @db.VarChar(255)
+  product Product @relation(fields: [product_id],references: [productid])
+  product_id Int
+  quantity Int
+}
+model Cart{
+  cartid Int @id
   product Product @relation(fields: [product_id],references: [productid])
   product_id Int
   quantity Int
